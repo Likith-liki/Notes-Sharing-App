@@ -19,11 +19,7 @@ const Register = () => {
       navigate('/dashboard')
     }
   }, [isAuthenticated, navigate])
-
-  useEffect(() => {
-    clearError()
-    setLocalError('')
-  }, [formData, clearError])
+  
 
   const handleChange = (e) => {
     setFormData(prev => ({

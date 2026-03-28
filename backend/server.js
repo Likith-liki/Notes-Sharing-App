@@ -23,11 +23,25 @@ const app = express();
 
 // Security Middleware
 app.use(helmet());
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://notes-sharing-app-flax.vercel.app",
+];
+
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:3000",
+    origin: function (origin, callback) {
+      // allow requests with no origin (like Postman)
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("CORS not allowed"));
+      }
+    },
     credentials: true,
-  })
+  }),
 );
 
 // Rate Limiting
@@ -79,7 +93,7 @@ const createDefaultAdmin = async () => {
         role: "admin",
       });
       console.log(
-        "✅ Default admin created: Username: Likith, Password: admin"
+        "✅ Default admin created: Username: Likith, Password: admin",
       );
     } else {
       console.log("✅ Default admin already exists");
