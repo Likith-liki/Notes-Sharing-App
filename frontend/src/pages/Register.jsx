@@ -142,11 +142,11 @@ const Register = () => {
           </p>
 
           <div style={{ marginTop: '2rem', padding: '1rem', background: '#f8f9fa', borderRadius: '8px' }}>
-            <p style={{ fontSize: '0.9rem', textAlign: 'center', margin: 0 }}>
+            {/* <p style={{ fontSize: '0.9rem', textAlign: 'center', margin: 0 }}>
               <strong>Demo Accounts:</strong><br />
               Admin: Likith / admin<br />
               User: user1 / user123
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
