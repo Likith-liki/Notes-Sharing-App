@@ -100,14 +100,6 @@ const Login = () => {
           <p style={{ textAlign: 'center', marginTop: '1rem' }}>
             Don't have an account? <Link to="/register">Sign up here</Link>
           </p>
-
-          <div style={{ marginTop: '2rem', padding: '1rem', background: '#f8f9fa', borderRadius: '8px' }}>
-            <p style={{ fontSize: '0.9rem', textAlign: 'center', margin: 0 }}>
-              <strong>Demo Accounts:</strong><br />
-              Admin: admin / admin123<br />
-              User: user1 / user123
-            </p>
-          </div>
         </div>
       </div>
     </div>
