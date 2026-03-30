@@ -11,13 +11,10 @@ const noteSchema = new mongoose.Schema(
     description: {
       type: String,
       required: true,
-      maxlength: 1000,
     },
     topic: {
       type: String,
       required: true,
-      trim: true,
-      maxlength: 50,
     },
     file: {
       type: String,
@@ -46,7 +43,7 @@ const noteSchema = new mongoose.Schema(
       required: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export default mongoose.model("Note", noteSchema);
