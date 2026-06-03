@@ -17,7 +17,7 @@ const noteSchema = new mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      maxlength: 50,
+      maxlength: 500,
     },
     file: {
       type: String,
@@ -46,7 +46,7 @@ const noteSchema = new mongoose.Schema(
       required: true,
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 export default mongoose.model("Note", noteSchema);

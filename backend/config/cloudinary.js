@@ -7,3 +7,6 @@ cloudinary.v2.config({
 });
 
 export default cloudinary.v2;
+// CLOUD_NAME=dgyfex7tl
+// CLOUD_API_KEY=785645137468837
+// CLOUD_API_SECRET=qAksdTSxPey8kxccmm4e_QV75d0
