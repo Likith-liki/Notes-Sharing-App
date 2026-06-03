@@ -28,6 +28,7 @@ const allowedOrigins = [
   "https://likith.shop",
   "https://www.likith.shop",
   "https://notes-sharing-app-gamma.vercel.app",
+  "https://notes-sharing-3pws6nxt2-m-likith-kumar-reddys-projects.vercel.app",
 ];
 
 app.use(
