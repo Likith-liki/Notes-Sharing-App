@@ -255,7 +255,7 @@ const AdminDashboard = () => {
                       name="category"
                       value={formData.category}
                       onChange={handleChange}
-                      className="form-input"
+                      className="form-input category-select"
                     >
                       <option value="general">General</option>
                       <option value="mathematics">Mathematics</option>

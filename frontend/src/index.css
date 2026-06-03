@@ -266,6 +266,16 @@ color: white;
 transition: .3s;
 }
 
+.category-select {
+  background-color: #2d3748;
+  color: white;
+}
+
+.category-select option {
+  background-color: #2d3748;
+  color: white;
+}
+
 .form-input:focus {
 outline: none;
 border-color: var(--primary);
