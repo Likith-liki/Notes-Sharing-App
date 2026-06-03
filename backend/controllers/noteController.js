@@ -37,7 +37,7 @@ export const getNote = async (req, res) => {
   try {
     const note = await Note.findById(req.params.id).populate(
       "createdBy",
-      "username"
+      "username",
     );
 
     if (!note) {
@@ -73,7 +73,7 @@ export const createNote = async (req, res) => {
     let fileData = null;
     if (req.file) {
       fileData = {
-        path: `/uploads/${req.file.filename}`,
+        path: req.file.path,
         type: getFileType(req.file.mimetype),
         size: req.file.size,
       };
@@ -93,7 +93,7 @@ export const createNote = async (req, res) => {
 
     const populatedNote = await Note.findById(note._id).populate(
       "createdBy",
-      "username"
+      "username",
     );
 
     res.status(201).json({
@@ -127,7 +127,7 @@ export const updateNote = async (req, res) => {
           fs.unlinkSync(oldFilePath);
         }
       }
-      filePath = `/uploads/${req.file.filename}`;
+      filePath = req.file.path;
     }
 
     const updatedNote = await Note.findByIdAndUpdate(
@@ -143,7 +143,7 @@ export const updateNote = async (req, res) => {
         fileSize: req.file ? req.file.size : note.fileSize,
         isPublished: isPublished !== undefined ? isPublished : note.isPublished,
       },
-      { new: true, runValidators: true }
+      { new: true, runValidators: true },
     ).populate("createdBy", "username");
 
     res.json({
@@ -188,23 +188,17 @@ export const getNoteFile = async (req, res) => {
     const note = await Note.findById(req.params.id);
 
     if (!note || !note.file) {
-      return res.status(404).json({ message: "File not found" });
+      return res.status(404).json({
+        message: "File not found",
+      });
     }
 
-    // Users can only access published notes
-    if (req.user.role !== "admin" && !note.isPublished) {
-      return res.status(403).json({ message: "Access denied" });
-    }
-
-    const filePath = path.join(__dirname, "..", note.file);
-
-    if (!fs.existsSync(filePath)) {
-      return res.status(404).json({ message: "File not found on server" });
-    }
-
-    res.sendFile(path.resolve(filePath));
+    return res.redirect(note.file);
   } catch (err) {
-    console.error("Get file error:", err);
-    res.status(500).json({ message: "Failed to get file" });
+    console.error(err);
+
+    return res.status(500).json({
+      message: "Failed to get file",
+    });
   }
 };
