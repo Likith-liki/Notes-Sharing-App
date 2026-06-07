@@ -50,7 +50,7 @@ const UserDashboard = () => {
   return (
     <div className="container">
       <div className="dashboard-header">
-        <h1>My Notes Dashboard 📚</h1>
+        <h1>My Notes Dashboard </h1>
         <p>Access all available notes and resources</p>
       </div>
 

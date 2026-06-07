@@ -63,7 +63,7 @@ try {
 
 };
 
-return ( <div className="container"> <div className="auth-card card"> <h2>🔐 Change Password</h2>
+return ( <div className="container"> <div className="auth-card card"> <h2> Change Password</h2>
 
     {error && (
       <div className="alert alert-error">

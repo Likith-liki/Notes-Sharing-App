@@ -166,7 +166,7 @@ const AdminDashboard = () => {
   return (
     <div className="container">
       <div className="dashboard-header">
-        <h1>Admin Dashboard 🛠️</h1>
+        <h1>Admin Dashboard </h1>
         <p>Manage notes, users, and admin accounts</p>
       </div>
 
@@ -188,13 +188,13 @@ const AdminDashboard = () => {
           onClick={() => setActiveTab('notes')}
           className={`btn ${activeTab === 'notes' ? 'btn-primary' : 'btn-secondary'}`}
         >
-          📝 Manage Notes
+           Manage Notes
         </button>
         <button
           onClick={() => setActiveTab('users')}
           className={`btn ${activeTab === 'users' ? 'btn-primary' : 'btn-secondary'}`}
         >
-          👥 Manage Users
+           Manage Users
         </button>
       </div>
 

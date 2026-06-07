@@ -52,7 +52,7 @@ const Login = () => {
     <div className="container">
       <div className="auth-container">
         <div className="card auth-card">
-          <h2>Welcome Back! 👋</h2>
+          <h2>Welcome Back! </h2>
           
           {error && (
             <div className="alert alert-error">

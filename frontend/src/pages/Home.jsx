@@ -16,7 +16,7 @@ const Home = () => {
         
         {isAuthenticated ? (
           <div>
-            <h3>Welcome back, {user?.username}! 🎉</h3>
+            <h3>Welcome back, {user?.username}! </h3>
             <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link to="/dashboard" className="btn btn-primary">
                 Go to Dashboard
@@ -42,19 +42,19 @@ const Home = () => {
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', marginTop: '4rem' }}>
         <div className="card" style={{ padding: '2rem', textAlign: 'center' }}>
-          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📖</div>
+          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}></div>
           <h3>Easy Note Access</h3>
           <p>Browse and download notes in various formats including PDF, images, and documents.</p>
         </div>
         
         <div className="card" style={{ padding: '2rem', textAlign: 'center' }}>
-          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>👨‍🏫</div>
+          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}></div>
           <h3>Admin Management</h3>
           <p>Admins can easily upload, organize, and manage educational materials.</p>
         </div>
         
         <div className="card" style={{ padding: '2rem', textAlign: 'center' }}>
-          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🚀</div>
+          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}></div>
           <h3>Modern Interface</h3>
           <p>Clean, responsive design that works perfectly on all devices.</p>
         </div>

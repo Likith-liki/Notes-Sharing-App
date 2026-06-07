@@ -80,7 +80,7 @@ const Register = () => {
     <div className="container">
       <div className="auth-container">
         <div className="card auth-card">
-          <h2>Create User Account 🚀</h2>
+          <h2>Create User Account </h2>
           
           {(error || localError) && (
             <div className="alert alert-error">

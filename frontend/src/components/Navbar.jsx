@@ -16,7 +16,7 @@ const Navbar = () => {
       <div className="container">
         <div className="nav-content">
           <Link to="/" className="nav-brand">
-            📚 Notes Sharing
+             Notes Sharing
           </Link>
           
           <div className="nav-links">

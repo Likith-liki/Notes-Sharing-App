@@ -47,14 +47,14 @@ const NoteCard = ({ note, onEdit, onDelete, showActions = false }) => {
           <h3 className="note-title">{note.title}</h3>
           <span className="note-topic">{note.topic}</span>
         </div>
-        {note.file && (
+        {/* {note.file && (
           <div 
             className={`file-icon ${note.fileType}`}
             title={note.fileType?.toUpperCase()}
           >
             {getFileIcon(note.fileType)}
           </div>
-        )}
+        )} */}
       </div>
 
       <p className="note-description">{note.description}</p>
