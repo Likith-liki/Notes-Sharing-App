@@ -72,6 +72,9 @@ export const createNote = async (req, res) => {
 
     let fileData = null;
     if (req.file) {
+      console.log("REQ.FILE:", req.file);
+    }
+    if (req.file) {
       fileData = {
         path: req.file.path,
         type: getFileType(req.file.mimetype),
@@ -193,9 +196,43 @@ export const getNoteFile = async (req, res) => {
       });
     }
 
-    return res.redirect(note.file);
+    // Users can only download files for published notes
+    if (req.user.role !== "admin" && !note.isPublished) {
+      return res.status(403).json({ message: "Access denied" });
+    }
+
+    // note.file is a Cloudinary URL. Fetch it server-side and stream it
+    // back to the client rather than redirecting the browser straight to
+    // Cloudinary — Cloudinary's public delivery rules can block inline
+    // PDF/raw access, and a redirect won't force a "Save As" download anyway.
+    const cloudinaryRes = await fetch(note.file);
+
+    if (!cloudinaryRes.ok) {
+      console.error(
+        "Cloudinary fetch failed:",
+        cloudinaryRes.status,
+        note.file,
+      );
+      return res.status(502).json({
+        message: "Failed to retrieve file from storage",
+      });
+    }
+
+    const contentType =
+      cloudinaryRes.headers.get("content-type") || "application/octet-stream";
+    const ext = path.extname(note.file.split("?")[0]) || "";
+    const filename = `${note.title.replace(/[^a-z0-9_\-]+/gi, "_")}${ext}`;
+
+    res.setHeader("Content-Type", contentType);
+    res.setHeader("Content-Disposition", `attachment; filename="${filename}"`);
+    if (note.fileSize) {
+      res.setHeader("Content-Length", note.fileSize);
+    }
+
+    const buffer = Buffer.from(await cloudinaryRes.arrayBuffer());
+    return res.send(buffer);
   } catch (err) {
-    console.error(err);
+    console.error("getNoteFile Error:", err);
 
     return res.status(500).json({
       message: "Failed to get file",

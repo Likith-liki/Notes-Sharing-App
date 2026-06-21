@@ -22,6 +22,14 @@ const noteSchema = new mongoose.Schema(
     file: {
       type: String,
     },
+    // Cloudinary identifiers needed to delete the asset later.
+    filePublicId: {
+      type: String,
+    },
+    fileResourceType: {
+      type: String,
+      enum: ["image", "raw", "video"],
+    },
     fileType: {
       type: String,
       enum: ["pdf", "image", "document", "spreadsheet", "text"],

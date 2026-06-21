@@ -95,10 +95,10 @@ const createDefaultAdmin = async () => {
         role: "admin",
       });
       console.log(
-        "✅ Default admin created: Username: Likith, Password: admin",
+        "✅ Default admin created → Username: Likith, Password: admin (change this after first login)",
       );
     } else {
-      console.log("✅ Default admin already exists");
+      console.log("✅ Default admin already exists (username: Likith)");
     }
   } catch (error) {
     console.error("❌ Error creating default admin:", error);
@@ -125,6 +125,6 @@ connectDB().then(() => {
   app.listen(PORT, () => {
     console.log(`🚀 Server running on port ${PORT}`);
     console.log(`📚 Notes Sharing API is ready!`);
-    console.log(`🔐 Default Admin: Likith / admin`);
+    console.log(`🔐 Admin username: Likith (password is set by you)`);
   });
 });

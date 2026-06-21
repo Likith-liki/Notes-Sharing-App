@@ -17,6 +17,10 @@ const NoteCard = ({ note, onEdit, onDelete, showActions = false }) => {
   }
 
   const handleDownload = async () => {
+    if (!note.file) {
+      alert('File not found')
+      return
+    }
     try {
       const response = await notesAPI.downloadFile(note._id)
       const url = window.URL.createObjectURL(new Blob([response.data]))
